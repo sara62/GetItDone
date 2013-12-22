@@ -1,52 +1,44 @@
 package com.JL.getitdone;
 
 import java.util.ArrayList;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class DeadlineListAdapter extends BaseAdapter{
-	private ArrayList<TaskRecord> tasks = new ArrayList<TaskRecord>();
-	public DeadlineListAdapter(){
-		tasks.add(new TaskRecord(
-				"Assignment 4", "Oct 1, 2013"));
-		tasks.add(new TaskRecord(
-				"Assignment 5", "Oct 1, 2013"));
-		tasks.add(new TaskRecord(
-				"Assignment 8", "Oct 1, 2013"));
-		tasks.add(new TaskRecord(
-				"Lab Report 4", "Oct 1, 2013"));
+public class DeadlineListAdapter extends ArrayAdapter<TaskRecord>{
+	
+	private final ArrayList<TaskRecord> tasks;
+	private final Context context;
+	
+	public DeadlineListAdapter(Context context, ArrayList<TaskRecord> tasks){
+		super(context, R.layout.deadline_row);
+		this.context = context;
+		this.tasks = tasks;
 	}	
 	
 	public int getCount(){
 		return tasks.size();
 	}
 	
-	public Object getItem (int position){
-		return getItem(position);
-	}
-	
-	public long getItemId(int position){
-		return position;
-	}
-	
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		View view = convertView;
 		
 		if (view == null){
-			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-			view = inflater.inflate(R.layout.deadline_row, parent, false);
+			view = LayoutInflater.from(getContext()).inflate(R.layout.deadline_row,null);
 		}
 		
-		TaskRecord time = tasks.get(position);
-		
 		TextView timeTextView = (TextView) view.findViewById(R.id.deadline_date);
-		timeTextView.setText(time.getTime());
+		timeTextView.setText(tasks.get(position).getTime());
 		
 		TextView tasksTextView = (TextView) view.findViewById(R.id.deadline_name);
-		tasksTextView.setText(time.getTasks());
+		tasksTextView.setText(tasks.get(position).getTasks());
+		
+		TextView tagsTextView = (TextView) view.findViewById(R.id.tags);
+		tagsTextView.setText(tasks.get(position).getTags());
 	return view;	
 	}
 
