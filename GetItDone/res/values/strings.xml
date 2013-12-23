@@ -3,6 +3,9 @@
 
     <string name="app_name">GetItDone</string>
     <string name="action_settings">Settings</string>
-    <string name="footer_text">Helloooooo</string>
+    <string name="deadline_names">Task</string>
+    <string name="deadline_notes">Notes</string>
+    <string name="title_activity_add_deadline">AddDeadlineActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

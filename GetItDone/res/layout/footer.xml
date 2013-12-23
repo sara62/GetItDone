@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/footer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:layout_alignParentBottom="true"
-    android:id="@+id/footer" >
+    android:layout_weight="3"
+    android:orientation="horizontal" >
 
-	    <Button
-	        android:id="@+id/add_button"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        ></Button>
-	    <Button
-	        android:id="@+id/delete_button"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        ></Button>
-    
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        android:layout_marginLeft="-5dip"
+        android:layout_marginRight="-5dip"
+        >
+    </Button>
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        android:layout_marginLeft="-5dip"
+        android:layout_marginRight="-5dip"
+        >
+    </Button>
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        android:layout_marginLeft="-5dip"
+        android:layout_marginRight="-5dip"
+        >
+    </Button>
+
 </LinearLayout>
