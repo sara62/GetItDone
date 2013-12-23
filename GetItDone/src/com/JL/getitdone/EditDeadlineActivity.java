@@ -2,15 +2,15 @@ package com.JL.getitdone;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
 
-public class AddDeadlineActivity extends Activity{
+public class EditDeadlineActivity extends Activity{
 	
 
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.deadline_row);
+			setContentView(R.layout.edit_deadlines);
 		}
 
 }

@@ -1,10 +1,11 @@
 package com.JL.getitdone;
 
 import java.util.ArrayList;
-import android.os.Bundle;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -35,6 +36,12 @@ public class Main extends Activity {
 
 		listView.setAdapter(deadlineListAdapter);
 
+		listView.setOnItemClickListener( new OnItemClickListener() {
+		    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		        Intent click = new Intent(Main.this,EditDeadlineActivity.class);
+		        startActivity(click);
+		    }
+		});
 	}
 
 	@Override
