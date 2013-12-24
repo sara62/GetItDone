@@ -8,12 +8,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -71,11 +71,27 @@ public class Main extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		// Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_actions, menu);
+	    return super.onCreateOptionsMenu(menu);
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_search:
+	            //openSearch();
+	            return true;
+	        case R.id.action_settings:
+//	            /openSettings();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 	private ArrayList<TaskRecord> generateData() {
 		ArrayList<TaskRecord> tasks = new ArrayList<TaskRecord>();
 		tasks.add(new TaskRecord("Assignment 4", "Oct 2, 2013", "Physics"));

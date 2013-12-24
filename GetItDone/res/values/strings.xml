@@ -11,5 +11,6 @@
     <string name="edit_button">Save</string>
     <string name="add_button">Save</string>
     <string name="name">Pick</string>
-
+    <string name="action_search">Search</string>
+    
 </resources>
