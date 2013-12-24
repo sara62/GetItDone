@@ -7,5 +7,9 @@
     <string name="deadline_notes">Notes</string>
     <string name="cancel_button">Cancel</string>
     <string name="save_button">Save</string>
-    
+    <string name="delete_button">Delete</string>
+    <string name="edit_button">Save</string>
+    <string name="add_button">Save</string>
+    <string name="name">Pick</string>
+
 </resources>

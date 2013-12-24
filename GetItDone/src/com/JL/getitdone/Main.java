@@ -3,7 +3,9 @@ package com.JL.getitdone;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Main extends Activity {
 
@@ -27,21 +30,43 @@ public class Main extends Activity {
 		DeadlineListAdapter deadlineListAdapter = new DeadlineListAdapter(this,
 				generateData());
 
-		//Set Footer
-		LayoutInflater inflater = this.getLayoutInflater();
-		LinearLayout listFooterView = (LinearLayout) inflater.inflate(
-				R.layout.footer, null);
-
-		listView.addFooterView(listFooterView);
-
 		listView.setAdapter(deadlineListAdapter);
 
-		listView.setOnItemClickListener( new OnItemClickListener() {
-		    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		        Intent click = new Intent(Main.this,EditDeadlineActivity.class);
-		        startActivity(click);
-		    }
+		//Click on a row
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> myAdapter, View view, int position,
+					long arg3) {
+
+				final String[] options_array = { "Add", "Edit", "Delete" };
+				AlertDialog.Builder builder = new AlertDialog.Builder(Main.this);
+				builder.setTitle(R.string.name).setItems(options_array,
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// TODO Auto-generated method stub
+								if (which == 0) {
+									Toast.makeText(getApplicationContext(),
+											"Added successfully",
+											Toast.LENGTH_LONG).show();
+								} else if (which == 1) {
+									Intent click = new Intent(Main.this,
+											EditDeadlineActivity.class);
+									startActivity(click);
+
+								} else {
+									Toast.makeText(getApplicationContext(),
+											"Deleted succesfully",
+											Toast.LENGTH_LONG).show();
+								}
+							}
+						});
+				builder.create();
+				builder.show();
+			}
 		});
+
 	}
 
 	@Override
