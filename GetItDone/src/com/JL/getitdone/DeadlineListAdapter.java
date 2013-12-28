@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class DeadlineListAdapter extends ArrayAdapter<TaskRecord>{
 	
-	private final ArrayList<TaskRecord> tasks;
+	private ArrayList<TaskRecord> tasks;
 	private final Context context;
 	
 	public DeadlineListAdapter(Context context, ArrayList<TaskRecord> tasks){

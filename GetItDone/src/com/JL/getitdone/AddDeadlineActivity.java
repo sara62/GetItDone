@@ -43,10 +43,10 @@ public class AddDeadlineActivity extends Activity {
 	public void onSave(View view){
 		Intent intent = getIntent();
 		
-		EditText timeView = (EditText) findViewById(R.id.time_view);
+		EditText timeView = (EditText) findViewById(R.id.date_view);
 		intent.putExtra("time", timeView.getText().toString());
 		
-		EditText notesView = (EditText) findViewById(R.id.notes_view);
+		EditText notesView = (EditText) findViewById(R.id.deadline_names_view);
 		intent.putExtra("notes", notesView.getText().toString());
 		
 		EditText tagView = (EditText) findViewById(R.id.tags_view);

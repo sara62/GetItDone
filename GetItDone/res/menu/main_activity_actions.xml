@@ -4,6 +4,11 @@
           android:icon="@drawable/ic_action_search"
           android:title="@string/action_search"
           android:showAsAction="ifRoom" />
+    <!-- Add, should always be in the overflow -->
+    <item android:id="@+id/add"
+          android:title="@string/add_button"
+          android:icon="@drawable/ic_action_new_label"
+          android:showAsAction="always" />
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
