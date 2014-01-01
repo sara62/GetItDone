@@ -1,14 +1,17 @@
 package com.JL.getitdone;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 
-public class EditDeadlineActivity extends Activity {
+public class EditDeadlineActivity extends ListActivity {
 
 	@SuppressLint("NewApi")
 	@Override
@@ -37,5 +40,12 @@ public class EditDeadlineActivity extends Activity {
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
+	public void onListItemClick(ListView listview, View v, int position, long id){
+		//Get Deadline from the adapter
+		TaskRecord d =  ((DeadlineListAdapter)getListAdapter()).getItem(position);
+		
+		Intent i = new Intent(EditDeadlineActivity.this, Main.class);
+		i.putExtra(Main.EXTRA_DEADLINE_ID, d.getTasks());
+	} 
 
 }

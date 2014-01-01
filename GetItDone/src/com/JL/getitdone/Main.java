@@ -1,7 +1,6 @@
 package com.JL.getitdone;
 
 import java.util.ArrayList;
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
@@ -15,17 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class Main extends ListActivity {
-	private static final String TAG = "Main";
+	private static final String TAG = "Main"; //For debugging
 	static final int DEADLINE_ADD_REQUEST = 1;
 	private Context context = null;
-	DeadlineListAdapter deadlineListAdapter = null;
+	private DeadlineListAdapter deadlineListAdapter = null;
 	ArrayList<TaskRecord> tasks = new ArrayList<TaskRecord>();
-
+	public static final String EXTRA_DEADLINE_ID = "com.JL.getitdone.deadline_id";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -148,6 +147,7 @@ public class Main extends ListActivity {
 
 				generateData(note, time, tag);
 				deadlineListAdapter.notifyDataSetChanged();
+				Toast.makeText(this, note + " is added", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
