@@ -1,6 +1,7 @@
 package com.JL.getitdone;
 
 import java.util.ArrayList;
+
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
@@ -18,13 +19,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class Main extends ListActivity {
-	private static final String TAG = "Main"; //For debugging
+	private static final String TAG = "Main"; // For debugging
 	static final int DEADLINE_ADD_REQUEST = 1;
 	private Context context = null;
 	private DeadlineListAdapter deadlineListAdapter = null;
 	ArrayList<TaskRecord> tasks = new ArrayList<TaskRecord>();
 	public static final String EXTRA_DEADLINE_ID = "com.JL.getitdone.deadline_id";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,11 +40,11 @@ public class Main extends ListActivity {
 		// Click on a row
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> myAdapter, View view,
-					int position, long arg3) {
+					final int position, long arg3) {
 
-				final String[] options_array = {"Edit", "Delete" };
+				final String[] options_array = { "Edit", "Delete" };
 				AlertDialog.Builder builder = new AlertDialog.Builder(Main.this);
-				builder.setTitle(R.string.add_button).setItems(options_array,
+				builder.setItems(options_array,
 						new DialogInterface.OnClickListener() {
 
 							@Override
@@ -51,18 +52,13 @@ public class Main extends ListActivity {
 									int which) { //
 								// TODO Auto-generated method stub
 								if (which == 0) {
-									Intent add = new Intent(Main.this,
-											AddDeadlineActivity.class);
-									startActivityForResult(add,
-											DEADLINE_ADD_REQUEST);
-
-								} else if (which == 1) {
 									Intent click = new Intent(Main.this,
 											EditDeadlineActivity.class);
 									startActivityForResult(click,
 											DEADLINE_ADD_REQUEST);
 
 								} else {
+									tasks.remove(position);
 									Toast.makeText(getApplicationContext(),
 											"Deleted succesfully",
 											Toast.LENGTH_LONG).show();
@@ -122,10 +118,8 @@ public class Main extends ListActivity {
 			// openSearch();
 			return true;
 		case R.id.add:
-			Intent add = new Intent(Main.this,
-					AddDeadlineActivity.class);
-			startActivityForResult(add,
-					DEADLINE_ADD_REQUEST);
+			Intent add = new Intent(Main.this, AddDeadlineActivity.class);
+			startActivityForResult(add, DEADLINE_ADD_REQUEST);
 			return true;
 		case R.id.action_settings:
 			// /openSettings();
@@ -147,7 +141,8 @@ public class Main extends ListActivity {
 
 				generateData(note, time, tag);
 				deadlineListAdapter.notifyDataSetChanged();
-				Toast.makeText(this, note + " is added", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, note + " is added", Toast.LENGTH_SHORT)
+						.show();
 			}
 		}
 	}
