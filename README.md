@@ -1,4 +1,4 @@
 GetItDone
 =========
 
-A visualized way of keeping track of deadlines and tasks
+A time management app that keeps track of projects, assignments deadlines and tasks with a visual timeline.
